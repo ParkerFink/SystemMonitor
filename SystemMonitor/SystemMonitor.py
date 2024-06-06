@@ -9,13 +9,13 @@ def getCPU():
     while True:
         time.sleep(1)
         cpu_percent = psutil.cpu_percent()
-        label_cpu.config(text=cpu_percent)
+        label_cpu.config(text="CPU Useage: " + str(cpu_percent) + "%")
 
 def getRAM():
     while True:
         time.sleep(1)
         ram_percent = psutil.virtual_memory()[2]
-        label_ram.config(text=ram_percent)
+        label_ram.config(text="RAM Useage: " + str(ram_percent) + "%")
 
         
 #threads
@@ -26,7 +26,7 @@ ramThead = threading.Thread(target=getRAM)
 
 #main window
 window = tkinter.Tk()
-window.geometry('800x500')
+window.geometry('275x200')
 window.title("System Monitor")
 
 global label_cpu
