@@ -7,42 +7,33 @@ import os
 
 
 #thread functions
-def getCPU():
+
+def getSysInfo():
     while True:
         time.sleep(3)
+
         cpu_percent = psutil.cpu_percent()
         label_cpu.config(text="CPU Useage: " + str(cpu_percent) + "%")
 
-def getRAM():
-    while True:
-        time.sleep(3)
         ram_percent = psutil.virtual_memory()[2]
         label_ram.config(text="RAM Useage: " + str(ram_percent) + "%")
 
-def getCPUTemp():
-    while True:
-        time.sleep(3)
         cpuTemp = psutil.sensors_temperatures()
         for a,b in cpuTemp.items():
             for x in b:
                 label_cpu_temp.config(text= "CPU Temp: " + str(x.current) + 'c')
 
-def getGPU():
-    while True:
-        time.sleep(3)
         gpus = GPUtil.getGPUs()
         for gpu in gpus:
             load = gpu.load * 100
             label_gpu.config(text="GPU Load: " + str(load) + "%")
+
             
                 
 
 
 #threads
-cpuThread = threading.Thread(target=getCPU)
-ramThead = threading.Thread(target=getRAM)
-cpuTempThread = threading.Thread(target=getCPUTemp)
-gpuThread = threading.Thread(target=getGPU)
+secondaryThread = threading.Thread(target=getSysInfo)
 
 #main window
 window = tkinter.Tk()
@@ -55,10 +46,7 @@ global label_cpu_temp
 global label_gpu
 
 
-cpuThread.start()
-ramThead.start()
-cpuTempThread.start()
-gpuThread.start()
+secondaryThread.start()
 
 
 
