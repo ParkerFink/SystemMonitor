@@ -8,19 +8,19 @@ from gpiozero import CPUTemperature
 #thread functions
 def getCPU():
     while True:
-        time.sleep(1)
+        time.sleep(3)
         cpu_percent = psutil.cpu_percent()
         label_cpu.config(text="CPU Useage: " + str(cpu_percent) + "%")
 
 def getRAM():
     while True:
-        time.sleep(1)
+        time.sleep(3)
         ram_percent = psutil.virtual_memory()[2]
         label_ram.config(text="RAM Useage: " + str(ram_percent) + "%")
 
 def getCPUTemp():
     while True:
-        time.sleep(1)
+        time.sleep(3)
         cpuTemp = psutil.sensors_temperatures()
         for a,b in cpuTemp.items():
             for x in b:
