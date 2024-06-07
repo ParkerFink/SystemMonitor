@@ -3,7 +3,7 @@ import tkinter
 import threading
 import time
 
-from gpiozero import CPUTemperature
+
 
 #thread functions
 def getCPU():
@@ -42,6 +42,7 @@ window.title("System Monitor")
 
 global label_cpu
 global label_ram
+global label_cpu_temp
 
 cpuThread.start()
 ramThead.start()
