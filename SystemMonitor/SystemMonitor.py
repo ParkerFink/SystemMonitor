@@ -13,10 +13,10 @@ def getSysInfo():
         time.sleep(3)
 
         cpu_percent = psutil.cpu_percent()
-        label_cpu.config(text="CPU Useage: " + str(cpu_percent) + "%")
+        label_cpu.config(text="CPU Usage: " + str(cpu_percent) + "%")
 
         ram_percent = psutil.virtual_memory()[2]
-        label_ram.config(text="RAM Useage: " + str(ram_percent) + "%")
+        label_ram.config(text="RAM Usage: " + str(ram_percent) + "%")
 
         cpuTemp = psutil.sensors_temperatures()
         for a,b in cpuTemp.items():
@@ -48,22 +48,30 @@ global label_gpu
 
 secondaryThread.start()
 
-
+l1 = tkinter.Label(text="CPU:")
+l1.grid(row=0, column=0)
 
 numOfCCores = tkinter.Label(text= "Number of cores: " + str(os.cpu_count()))
-numOfCCores.pack()
+numOfCCores.grid(row=1, column=1)
 
 label_cpu = tkinter.Label(text= "CPU N/A")
-label_cpu.pack()
+label_cpu.grid(row=2, column=1)
 
 label_cpu_temp = tkinter.Label(text= "CPU Temp N/A")
-label_cpu_temp.pack()
+label_cpu_temp.grid(row=3, column=1)
+
+l2 = tkinter.Label(text="RAM:")
+l2.grid(row=4, column=0)
 
 label_ram = tkinter.Label(text= "RAM N/A")
-label_ram.pack()
+label_ram.grid(row=5, column=1)
+
+
+l3 = tkinter.Label(text="GPU:")
+l3.grid(row=6, column=0)
 
 label_gpu = tkinter.Label(text= "GPU N/A")
-label_gpu.pack()
+label_gpu.grid(row=7, column=1)
 
 
 window.mainloop()
