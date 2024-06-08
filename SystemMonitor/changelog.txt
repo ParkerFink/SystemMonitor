@@ -2,3 +2,7 @@ v0.3
 -removed gpiozero module
 -added gpu usage label
 -simplified threading
+
+v0.4
+-fixed spelling mistakes
+-added labels for each section
